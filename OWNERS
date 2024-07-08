@@ -1,0 +1,22 @@
+reviewers:
+  - zshi-redhat
+  - dougbtv
+  - fepan
+  - s1061123
+  - bn222
+  - Billy99
+  - wizhaoredhat
+  - SchSeba
+  - zeeke
+approvers:
+  - zshi-redhat
+  - dougbtv
+  - fepan
+  - s1061123
+  - bn222
+  - Billy99
+  - wizhaoredhat
+  - SchSeba
+  - zeeke
+component: "Networking"
+subcomponent: "SR-IOV"
