@@ -16,4 +16,7 @@
 .gopath/
 .idea/
 bin/
-build/
+build/*
+
+# For Konflux
+!vendor/github.com/onsi/ginkgo/v2/ginkgo/build/build_command.go
