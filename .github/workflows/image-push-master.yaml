@@ -10,10 +10,10 @@ on:
 jobs:
   build-and-push-amd64-rdma-cni:
     name: image push amd64
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -26,7 +26,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: build and push rdma-cni
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: true
@@ -38,13 +38,13 @@ jobs:
 
   build-and-push-arm64-rdma-cni:
     name: image push arm64
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: set up QEMU
-        uses: docker/setup-qemu-action@v2
+        uses: docker/setup-qemu-action@v3
 
       - name: set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -57,7 +57,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: build and push rdma-cni
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: true
@@ -68,13 +68,13 @@ jobs:
 
   build-and-push-ppc64le-rdma-cni:
     name: image Push ppc64le
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: set up QEMU
-        uses: docker/setup-qemu-action@v2
+        uses: docker/setup-qemu-action@v3
 
       - name: set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -87,7 +87,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: build and push rdma-cni
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: true
@@ -97,7 +97,7 @@ jobs:
           file: ./Dockerfile.ppc64le
 
   push-manifest:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: [build-and-push-amd64-rdma-cni,build-and-push-arm64-rdma-cni,build-and-push-ppc64le-rdma-cni]
     steps:
     - name: set up Docker Buildx
